@@ -7,5 +7,11 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes("andrewid")) {
+    return (
+      "we can't give u that info lol"
+    );
+  }
+
   return "";
 }
