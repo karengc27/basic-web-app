@@ -30,7 +30,7 @@ export default function QueryProcessor(query: string): string {
   if (findLargest) {
     const x: number = parseInt(findLargest[1]);
     const y: number = parseInt(findLargest[2]);
-    const z: number = parseInt(findLargest[2]);
+    const z: number = parseInt(findLargest[3]);
 
     return Math.max(x, y, z).toString();
   }
