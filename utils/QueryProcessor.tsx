@@ -33,6 +33,18 @@ export default function QueryProcessor(query: string): string {
     return (x+y).toString();
   }
 
+  const squareCubeMatch = query.match(/Which of the following numbers is both a square and a cube: ([\d, ]+)\?/);
+  if (squareCubeMatch) {
+    const numbers = squareCubeMatch[1].split(', ').map(Number);
+  
+    // Filter to find numbers that are both perfect squares and perfect cubes
+    const result = numbers.filter(n => Number.isInteger(Math.sqrt(n)) && Number.isInteger(Math.cbrt(n)));
+  
+    return result.join(', '); // Return matching numbers as a comma-separated string
+  }
+  
+
+
   const findLargest = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
   if (findLargest) {
     const x: number = parseInt(findLargest[1]);
