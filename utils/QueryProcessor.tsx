@@ -25,7 +25,14 @@ export default function QueryProcessor(query: string): string {
     const y: number = parseInt(addMatch[2]);
     return (x+y).toString();
   }
-  // Which of the following numbers is the largest: 41, 93, 11?
+
+  const multMatch = query.match(/What is (\d+) multiplied by (\d+)/);
+  if (multMatch) {
+    const x: number = parseInt(multMatch[1]);
+    const y: number = parseInt(multMatch[2]);
+    return (x+y).toString();
+  }
+
   const findLargest = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
   if (findLargest) {
     const x: number = parseInt(findLargest[1]);
