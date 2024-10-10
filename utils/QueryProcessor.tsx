@@ -44,7 +44,7 @@ export default function QueryProcessor(query: string): string {
   if (multMatch) {
     const x: number = parseInt(multMatch[1]);
     const y: number = parseInt(multMatch[2]);
-    return (x+y).toString();
+    return (x*y).toString();
   }
 
   const squareCubeMatch = query.match(/Which of the following numbers is both a square and a cube: ([\d, ]+)\?/);
