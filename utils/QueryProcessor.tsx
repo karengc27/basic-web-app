@@ -26,6 +26,20 @@ export default function QueryProcessor(query: string): string {
     return (x+y).toString();
   }
 
+  const minMatch = query.match(/What is (\d+) minus (\d+)/);
+  if (minMatch) {
+    const x: number = parseInt(minMatch[1]);
+    const y: number = parseInt(minMatch[2]);
+    return (x-y).toString();
+  }
+
+  const divMatch = query.match(/What is (\d+) divided by (\d+)/);
+  if (divMatch) {
+    const x: number = parseInt(divMatch[1]);
+    const y: number = parseInt(divMatch[2]);
+    return (x/y).toString();
+  }
+
   const multMatch = query.match(/What is (\d+) multiplied by (\d+)/);
   if (multMatch) {
     const x: number = parseInt(multMatch[1]);
