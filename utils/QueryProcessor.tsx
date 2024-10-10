@@ -57,7 +57,18 @@ export default function QueryProcessor(query: string): string {
     return result.join(', '); // Return matching numbers as a comma-separated string
   }
   
-
+  const primeMatch = query.match(/Which of the following numbers are primes: ([\d, ]+)\?/);
+  if (primeMatch) {
+    const numbers = primeMatch[1].split(', ').map(Number);
+  
+    // Filter to find prime numbers
+    const result = numbers.filter(n => n > 1 && 
+      Array.from({ length: Math.floor(Math.sqrt(n)) }, (_, i) => i + 2).every(divisor => n % divisor !== 0)
+    );
+  
+    return result.join(', '); // Return matching prime numbers as a comma-separated string
+  }
+  
 
   const findLargest = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
   if (findLargest) {
